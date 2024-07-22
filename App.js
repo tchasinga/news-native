@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, Image, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, Button, TouchableOpacity, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import * as Animatable from 'react-native-animatable';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Details from './Details.js'
+import Details from './Details.js';
 
 const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }) => {
   const [ideas, setIdeas] = useState([]);
+  const [loading, setLoading] = useState(true); // Create a loading state
 
   const fetchIdeas = async () => {
+    setLoading(true); // Set loading to true before fetching data
     try {
-      const response = await axios.get(' https://blogs-sharing-ideas-api.onrender.com/api/sharing/getallsharingideas');
+      const response = await axios.get('https://blogs-sharing-ideas-api.onrender.com/api/sharing/getallsharingideas');
       setIdeas(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched
     }
   };
 
@@ -41,12 +45,16 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Button title="Refresh" onPress={fetchIdeas} />
-      <FlatList
-        data={ideas}
-        renderItem={renderIdea}
-        keyExtractor={(item) => item._id}
-        contentContainerStyle={styles.list}
-      />
+      {loading ? ( // Show ActivityIndicator while loading is true
+        <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />
+      ) : (
+        <FlatList
+          data={ideas}
+          renderItem={renderIdea}
+          keyExtractor={(item) => item._id}
+          contentContainerStyle={styles.list}
+        />
+      )}
       <StatusBar style="auto" />
     </View>
   );
@@ -101,6 +109,11 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     marginTop: 10,
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
