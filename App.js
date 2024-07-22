@@ -45,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Button title="Refresh" onPress={fetchIdeas} />
-      {loading ? ( // Show ActivityIndicator while loading is true
+      {loading ? ( 
         <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />
       ) : (
         <FlatList
@@ -63,8 +63,8 @@ const HomeScreen = ({ navigation }) => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="News">
+        <Stack.Screen name="News" component={HomeScreen} />
         <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
     </NavigationContainer>
