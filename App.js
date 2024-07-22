@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, Button, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import * as Animatable from 'react-native-animatable';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Details from './Details.js'
 
-const App = () => {
+const Stack = createStackNavigator();
+
+const HomeScreen = ({ navigation }) => {
   const [ideas, setIdeas] = useState([]);
 
   const fetchIdeas = async () => {
     try {
-      const response = await axios.get('https://blogs-sharing-ideas-api.onrender.com/api/sharing/getallsharingideas');
+      const response = await axios.get(' https://blogs-sharing-ideas-api.onrender.com/api/sharing/getallsharingideas');
       setIdeas(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -21,14 +26,16 @@ const App = () => {
   }, []);
 
   const renderIdea = ({ item, index }) => (
-    <Animatable.View animation="fadeInUp" delay={index * 100} style={styles.card}>
-      <Text style={styles.title}>{item.name}</Text>
-      <Text style={styles.subtitle}>{item.publicrole}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-      {item.imageUrls.length > 0 && (
-        <Image source={{ uri: item.imageUrls[0] }} style={styles.image} />
-      )}
-    </Animatable.View>
+    <TouchableOpacity onPress={() => navigation.navigate('Details', { idea: item })}>
+      <Animatable.View animation="fadeInUp" delay={index * 100} style={styles.card}>
+        <Text style={styles.title}>{item.name}</Text>
+        <Text style={styles.subtitle}>{item.publicrole}</Text>
+        <Text style={styles.description}>{item.description}</Text>
+        {item.imageUrls.length > 0 && (
+          <Image source={{ uri: item.imageUrls[0] }} style={styles.image} />
+        )}
+      </Animatable.View>
+    </TouchableOpacity>
   );
 
   return (
@@ -42,6 +49,17 @@ const App = () => {
       />
       <StatusBar style="auto" />
     </View>
+  );
+};
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
