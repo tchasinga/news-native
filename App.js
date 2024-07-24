@@ -11,10 +11,10 @@ const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }) => {
   const [ideas, setIdeas] = useState([]);
-  const [loading, setLoading] = useState(true); // Create a loading state
+  const [loading, setLoading] = useState(true);
 
   const fetchIdeas = async () => {
-    setLoading(true); // Set loading to true before fetching data
+    setLoading(true); // Set loading to true before fetching data...
     try {
       const response = await axios.get('https://blogs-sharing-ideas-api.onrender.com/api/sharing/getallsharingideas');
       setIdeas(response.data);
