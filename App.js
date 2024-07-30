@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
 
   const renderIdea = ({ item, index }) => (
     <TouchableOpacity onPress={() => navigation.navigate('Details', { idea: item })}>
-      <Animatable.View animation="fadeInUp" delay={index * 100} style={styles.card}>
+      <Animatable.View animation="fadeInUp" delay={index * 90} style={styles.card}>
         <Text style={styles.title}>{item.name}</Text>
         <Text style={styles.subtitle}>{item.publicrole}</Text>
         <Text style={styles.description}>{item.description}</Text>
