@@ -25,13 +25,7 @@
         "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE",
         "CAMERA"
-      ],
-      "release": {
-        "minify": false,
-        "proguard": {
-          "enabled": false
-        }
-      }
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
