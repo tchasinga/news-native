@@ -19,7 +19,6 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.tchasinga.newsnative",
       "permissions": [
         "INTERNET",
         "ACCESS_NETWORK_STATE",
@@ -27,8 +26,6 @@
         "WRITE_EXTERNAL_STORAGE",
         "CAMERA"
       ],
-      "minSdkVersion": 21,
-      "targetSdkVersion": 30,
       "release": {
         "minify": false,
         "proguard": {
@@ -38,11 +35,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "b7c27b7a-c4ee-47b7-b526-5ea610df95aa"
-      }
     }
   }
 }
