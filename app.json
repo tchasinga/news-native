@@ -19,15 +19,25 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.tchasinga.newsnative"
+      "package": "com.tchasinga.newsnative",
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "CAMERA"
+      ],
+      "minSdkVersion": 21,
+      "targetSdkVersion": 30,
+      "release": {
+        "minify": false,
+        "proguard": {
+          "enabled": false
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "0d619817-7e06-4ad7-944f-d150243ad59b"
-      }
     }
   }
 }
