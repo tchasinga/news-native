@@ -1,1 +1,8 @@
 eas build -p android --profile preview
+
+
+=====================================================
+
+adding doctor for checking 
+
+npx expo-doctor
