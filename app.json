@@ -25,10 +25,16 @@
         "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE",
         "CAMERA"
-      ]
+      ],
+      "package": "com.tchasinga.newsnative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dacd76c6-d132-4f46-8bb7-9635c8ccc740"
+      }
     }
   }
 }
