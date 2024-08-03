@@ -14,8 +14,7 @@ const HomeScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true); 
 
   const fetchIdeas = async () => {
-    setLoading(true); // Set loading to true before fetching data...
-    // this design is added now for everything
+    setLoading(true); 
     try {
       const response = await axios.get('https://blogs-sharing-ideas-api.onrender.com/api/sharing/getallsharingideas');
       setIdeas(response.data);
