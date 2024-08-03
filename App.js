@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }) => {
   const [ideas, setIdeas] = useState([]);
-  const [loading, setLoading] = useState(true); // Create a loading state
+  const [loading, setLoading] = useState(true); // C
 
   const fetchIdeas = async () => {
     setLoading(true); // Set loading to true before fetching data...
