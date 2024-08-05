@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
-      setLoading(false); // this  be Set loading to false after data is fetched
+      setLoading(false); // this  be Set loading to false after data is 
     }
   };
 
